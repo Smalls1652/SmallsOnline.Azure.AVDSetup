@@ -14,6 +14,19 @@
         <SrcLibProj_Path>$(SrcLibDir_Path)$(DirSeparator)SmallsOnline.Azure.AVDSetup.Lib.csproj</SrcLibProj_Path>
     </PropertyGroup>
 
+    <Target Name="BuildPowerShellModule">
+        <Message Text="-- Starting the build for the PowerShell module --" Importance="high" />
+
+        <CallTarget Targets="CleanBuildDir" />
+        <CallTarget Targets="CopyModuleFiles" />
+        <CallTarget Targets="BuildLibrary" />
+
+        <Message Text="-- Build completed --" Importance="high" />
+        <Message Text="----------------------" Importance="high" />
+        <Message Text="Built module located at:" Importance="high" />
+        <Message Text="$(BuildModuleDir_Path)" Importance="high" />
+    </Target>
+
     <Target Name="CleanBuildDir">
 
         <Message Text="Creating the fully compiled module directory..." Importance="high" />

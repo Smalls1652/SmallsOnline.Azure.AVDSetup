@@ -20,7 +20,7 @@ This PowerShell module is a work-in-progress automation tool I've been working o
 Open a CMD/PowerShell/Shell prompt and navigate to the folder of the cloned repo. Then run the following command:
 
 ```
-dotnet msbuild -target:"CleanBuildDir;CopyModuleFiles;BuildLibrary" -property:"Configuration=Release" ".\SmallsOnline.Azure.AVDSetup.csproj"
+dotnet msbuild -target:"BuildPowerShellModule" -property:"Configuration=Release" ".\SmallsOnline.Azure.AVDSetup.csproj"
 ```
 
 The fully compiled module will be located in the `\build\` directory.

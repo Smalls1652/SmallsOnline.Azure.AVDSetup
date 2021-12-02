@@ -25,4 +25,4 @@ jobs:
          dotnet-version: '6.0.x'
 
       - name: Run MSBuild
-        run: dotnet msbuild -target:"CleanBuildDir;CopyModuleFiles;BuildLibrary" -property:"Configuration=Release" "SmallsOnline.Azure.AVDSetup.csproj"
+        run: dotnet msbuild -target:"BuildPowerShellModule" -property:"Configuration=Release" "SmallsOnline.Azure.AVDSetup.csproj"
