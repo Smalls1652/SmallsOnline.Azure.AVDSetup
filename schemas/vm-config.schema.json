@@ -1,0 +1,30 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Virtual Machine Config",
+    "description": "Azure Virtual Desktop VM config settings.",
+    "type": "object",
+    "properties": {
+        "vmSize": {
+            "description": "The size of the virtual machine.",
+            "type": "string"
+        },
+        "vmLocation": {
+            "description": "The regional location of the virtual machine.",
+            "type": "string"
+        },
+        "vmResourceGroupName": {
+            "description": "The resource group name where the virtual machine will reside.",
+            "type": "string"
+        },
+        "vmHostNamePrefix": {
+            "description": "The prefix for the virtual machine's hostname.",
+            "type": "string"
+        }
+    },
+    "required": [
+        "vmSize",
+        "vmLocation",
+        "vmResourceGroupName",
+        "vmHostNamePrefix"
+    ]
+}

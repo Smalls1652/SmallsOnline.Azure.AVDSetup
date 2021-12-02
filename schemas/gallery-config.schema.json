@@ -1,0 +1,30 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Compute Gallery Config",
+    "description": "Azure Virtual Desktop VM compute gallery image settings.",
+    "type": "object",
+    "properties": {
+        "galleryResourceGroupName": {
+            "description": "The resource group name where the compute gallery resides.",
+            "type": "string"
+        },
+        "galleryName": {
+            "description": "The name of the compute gallery.",
+            "type": "string"
+        },
+        "galleryImageDefinitionName": {
+            "description": "The name of the image to use.",
+            "type": "string"
+        },
+        "galleryImageDefinitionVersion": {
+            "description": "The version of the image to use.",
+            "type": "string"
+        }
+    },
+    "required": [
+        "galleryResourceGroupName",
+        "galleryName",
+        "galleryImageDefinitionName",
+        "galleryImageDefinitionVersion"
+    ]
+}

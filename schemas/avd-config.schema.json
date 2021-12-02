@@ -1,0 +1,35 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "AVD Config",
+    "description": "Azure Virtual Desktop VM deployment settings.",
+    "type": "object",
+    "properties": {
+        "vmConfig": {
+            "description": "Config settings for the VM.",
+            "type": "object",
+            "$ref": "./vm-config.schema.json"
+        },
+        "vnetConfig": {
+            "description": "Config settings for the virtual network.",
+            "type": "object",
+            "$ref": "./vnet-config.schema.json"
+        },
+        "galleryConfig": {
+            "description": "Config settings for the gallery image to use.",
+            "type": "object",
+            "$ref": "./gallery-config.schema.json"
+        },
+        "adConfig": {
+            "description": "Config settings for the Active Directory domain to join.",
+            "type": "object",
+            "$ref": "./activedirectory-config.schema.json"
+        },
+        "secretItems": {
+            "description": "Secret items to use for .",
+            "type": "array",
+            "items": {
+                "$ref": "./secret-item.schema.json"
+            }
+        }
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Virtual Network Config",
+    "description": "Azure Virtual Desktop virtual network deployment settings.",
+    "type": "object",
+    "properties": {
+        "vnetResourceGroupName": {
+            "description": "The resource group name where the virtual network resides.",
+            "type": "string"
+        },
+        "vnetName": {
+            "description": "The name of the virtual network.",
+            "type": "string"
+        },
+        "vnetSubnetName": {
+            "description": "The name of the subnet to use in the virtual network.",
+            "type": "string"
+        }
+    },
+    "required": [
+        "vnetResourceGroupName",
+        "vnetName",
+        "vnetSubnetName"
+    ]
+}

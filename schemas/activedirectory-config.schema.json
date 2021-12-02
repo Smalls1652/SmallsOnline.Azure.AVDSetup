@@ -1,0 +1,20 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Active Directory Config",
+    "description": "Azure Virtual Desktop Active Directory settings.",
+    "type": "object",
+    "properties": {
+        "adDomainName": {
+            "description": "The name of the Active Directory domain to join the virtual machine to.",
+            "type": "string"
+        },
+        "adOrganizationalUnitPath": {
+            "description": "The OU path in Active Directory the virtual machine's computer account needs to reside.",
+            "type": "string"
+        }
+    },
+    "required": [
+        "adDomainName",
+        "adOrganizationalUnitPath"
+    ]
+}
