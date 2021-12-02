@@ -1,0 +1,28 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow
+name: Build module
+on:
+  - push
+  - pull_request
+jobs:
+  build-module:
+    name: Build PowerShell module
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        configuration: [ 'Release' ]
+    env:
+      DOTNET_NOLOGO: true
+    permissions:
+      contents: read
+      packages: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup dotnet SDK
+        uses: actions/setup-dotnet@v1
+        with:
+         dotnet-version: '6.0.x'
+
+      - name: Run MSBuild
+        run: dotnet msbuild -target:"CleanBuildDir;CopyModuleFiles;BuildLibrary" -property:"Configuration=Release" "SmallsOnline.Azure.AVDSetup.csproj"
