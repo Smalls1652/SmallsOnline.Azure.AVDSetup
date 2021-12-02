@@ -1,0 +1,34 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <DirSeparator>$([System.IO.Path]::DirectorySeparatorChar)</DirSeparator>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <BuildDir_Path>$(MSBuildStartupDirectory)$(DirSeparator)build</BuildDir_Path>
+        <BuildModuleDir_Path>$(BuildDir_Path)$(DirSeparator)SmallsOnline.Azure.AVDSetup</BuildModuleDir_Path>
+        <BuildModuleLibDir_Path>$(BuildModuleDir_Path)$(DirSeparator)lib</BuildModuleLibDir_Path>
+
+        <SrcDir_Path>$(MSBuildStartupDirectory)$(DirSeparator)src</SrcDir_Path>
+        <SrcModuleDir_Path>$(SrcDir_Path)$(DirSeparator)SmallsOnline.Azure.AVDSetup</SrcModuleDir_Path>
+        <SrcLibDir_Path>$(SrcDir_Path)$(DirSeparator)SmallsOnline.Azure.AVDSetup.Lib</SrcLibDir_Path>
+        <SrcLibProj_Path>$(SrcLibDir_Path)$(DirSeparator)SmallsOnline.Azure.AVDSetup.Lib.csproj</SrcLibProj_Path>
+    </PropertyGroup>
+
+    <Target Name="CleanBuildDir">
+
+        <Message Text="Creating the fully compiled module directory..." Importance="high" />
+
+        <RemoveDir Directories="$(BuildDir_Path)" Condition="Exists('$(BuildDir_Path)')" />
+        <MakeDir Directories="$(BuildDir_Path)" Condition="!Exists('$(BuildDir_Path)')" />
+    </Target>
+
+    <Target Name="CopyModuleFiles">
+        <Exec Command='pwsh -File "$(MSBuildStartupDirectory)$(DirSeparator)copyModuleSrc.ps1"' />
+    </Target>
+
+    <Target Name="BuildLibrary">
+        <MSBuild Projects="$(SrcLibProj_Path)" Properties="Configuration=$(Configuration)" Targets="Clean;Restore;Publish" />
+
+        <Exec Command='pwsh -File "$(MSBuildStartupDirectory)$(DirSeparator)copyLibToBuild.ps1" -Configuration "$(Configuration)"' />
+    </Target>
+</Project>
