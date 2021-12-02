@@ -33,7 +33,7 @@ Copyright = '2021'
 Description = 'Automate the creation of Azure Virtual Desktop session hosts.'
 
 # Minimum version of the PowerShell engine required by this module
-# PowerShellVersion = ''
+PowerShellVersion = "7.2"
 
 # Name of the PowerShell host required by this module
 # PowerShellHostName = ''
