@@ -18,6 +18,7 @@ function New-AvdHost {
 
         Default {
             $configItem = $Config
+            break
         }
     }
 
