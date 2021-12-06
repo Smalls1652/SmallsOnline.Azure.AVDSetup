@@ -28,6 +28,7 @@ jobs:
         run: dotnet msbuild -target:"BuildPowerShellModule" -property:"Configuration=Release" "SmallsOnline.Azure.AVDSetup.csproj"
 
       - name: Zip module
+        shell: pwsh
         run: Compress-Archive -Path "./build/SmallsOnline.Azure.AVDSetup/*" -DestinationPath "./build/SmallsOnline.Azure.AVDSetup.zip" -CompressionLevel "Optimal" -Verbose
 
       - name: Upload module artifact
