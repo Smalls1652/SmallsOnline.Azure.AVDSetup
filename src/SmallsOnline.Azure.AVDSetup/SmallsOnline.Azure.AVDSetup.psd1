@@ -51,7 +51,28 @@ PowerShellVersion = "7.2"
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-# RequiredModules = @()
+RequiredModules = @(
+    @{
+        "ModuleName" = "Az.Accounts";
+        "ModuleVersion" = "2.6.1";
+    },
+    @{
+        "ModuleName" = "Az.Compute";
+        "ModuleVersion" = "4.18.0";
+    },
+    @{
+        "ModuleName" = "Az.DesktopVirtualization";
+        "ModuleVersion" = "3.1.0";
+    },
+    @{
+        "ModuleName" = "Az.Network";
+        "ModuleVersion" = "4.12.0";
+    },
+    @{
+        "ModuleName" = "Microsoft.PowerShell.SecretManagement";
+        "ModuleVersion" = "1.1.0"
+    }
+)
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
