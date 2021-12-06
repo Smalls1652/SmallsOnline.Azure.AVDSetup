@@ -33,7 +33,8 @@ jobs:
 
       - name: Upload module artifact
         env:
-          RELEASE_API_URI: https://api.github.com/repos/${{ github.repository }}/releases/${{ github.ref_name }}/assets
+          TAG_RELEASE_API: https://api.github.com/repos/${{ github.repository }}/releases/tags/${{ github.ref_name }}
+          RELEASE_API_URI: https://api.github.com/repos/${{ github.repository }}/releases
         shell: pwsh
-        run: Write-Information -InformationAction "Continue" -MessageData $env:RELEASE_API_URI ; Invoke-WebRequest -Method "Post" -Uri $env:RELEASE_API_URI -ContentType "application/zip" -Headers @{ "Authorization" = "Bearer ${{ secrets.GITHUB_TOKEN }}" } -InFile "./build/SmallsOnline.Azure.AVDSetup.zip"
+        run: $apiHeaders = @{ "Authorization" = "Bearer ${{ secrets.GITHUB_TOKEN }}"; } ; $releaseId = (Invoke-RestMethod -Method "Get" -Headers $apiHeaders -Uri $env:TAG_RELEASE_API)[0].id ; Invoke-WebRequest -Method "Post" -Uri "$($env:RELEASE_API_URI)/$($releaseId)/assets" -ContentType "application/zip" -Headers $apiHeaders -InFile "./build/SmallsOnline.Azure.AVDSetup.zip"
            
