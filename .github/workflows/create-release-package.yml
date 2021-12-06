@@ -33,11 +33,5 @@ jobs:
 
       - name: Upload module artifact
         shell: pwsh
-        run: |
-          Invoke-WebRequest \
-          -Method "Post" \
-          -Uri "$($env:GITHUB_API_URL)/repos/$($env:GITHUB_REPOSITORY)/releases/$($env:GITHUB_REF_NAME)/assets" \
-          -ContentType "application/zip" \
-          -Headers @{ "Authorization" = "Bearer ${{ secrets.GITHUB_TOKEN }}" } \
-          -InFile "./build/SmallsOnline.Azure.AVDSetup.zip"
+        run: Invoke-WebRequest -Method "Post" -Uri "$($env:GITHUB_API_URL)/repos/$($env:GITHUB_REPOSITORY)/releases/$($env:GITHUB_REF_NAME)/assets" -ContentType "application/zip" -Headers @{ "Authorization" = "Bearer ${{ secrets.GITHUB_TOKEN }}" } -InFile "./build/SmallsOnline.Azure.AVDSetup.zip"
            
