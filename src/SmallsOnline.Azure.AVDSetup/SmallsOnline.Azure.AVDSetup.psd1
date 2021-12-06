@@ -124,10 +124,10 @@ PrivateData = @{
         # Tags = @()
 
         # A URL to the license for this module.
-        # LicenseUri = ''
+        LicenseUri = "https://raw.githubusercontent.com/Smalls1652/SmallsOnline.Azure.AVDSetup/main/LICENSE"
 
         # A URL to the main website for this project.
-        # ProjectUri = ''
+        ProjectUri = "https://github.com/Smalls1652/SmallsOnline.Azure.AVDSetup"
 
         # A URL to an icon representing this module.
         # IconUri = ''
@@ -136,10 +136,10 @@ PrivateData = @{
         # ReleaseNotes = ''
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = "alpha01"
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
-        # RequireLicenseAcceptance = $false
+        RequireLicenseAcceptance = $false
 
         # External dependent modules of this module
         # ExternalModuleDependencies = @()
