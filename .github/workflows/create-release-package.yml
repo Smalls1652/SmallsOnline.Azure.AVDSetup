@@ -36,5 +36,5 @@ jobs:
           TAG_RELEASE_API: https://api.github.com/repos/${{ github.repository }}/releases/tags/${{ github.ref_name }}
           RELEASE_API_URI: https://api.github.com/repos/${{ github.repository }}/releases
         shell: pwsh
-        run: $apiHeaders = @{ "Authorization" = "Bearer ${{ secrets.GITHUB_TOKEN }}"; } ; $releaseId = (Invoke-RestMethod -Method "Get" -Headers $apiHeaders -Uri $env:TAG_RELEASE_API)[0].id ; Write-Output $releaseId ; Write-Output "$($env:RELEASE_API_URI)/$($releaseId)/assets" ; Invoke-RestMethod -Method "Post" -Uri "$($env:RELEASE_API_URI)/$($releaseId)/assets" -ContentType "application/zip" -Headers $apiHeaders -InFile "./build/SmallsOnline.Azure.AVDSetup.zip" -Verbose
+        run: ./Upload-ReleaseItem.ps1 -Token "{{ secrets.GITHUB_TOKEN }}" -Name "module-zip" -Verbose
            
