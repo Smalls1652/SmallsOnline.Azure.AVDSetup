@@ -24,7 +24,7 @@ namespace SmallsOnline.Azure.AVDSetup.Lib.Models
             VirtualNetworkConfig = _configFile.VirtualNetworkConfig;
             GalleryConfig = _configFile.GalleryConfig;
             ActiveDirectoryConfig = _configFile.ActiveDirectoryConfig;
-            SecretItems = _configFile.SecretItems;
+            VirtualMachineSecrets = _configFile.VirtualMachineSecrets;
         }
 
         [JsonPropertyName("vmConfig")]
@@ -39,8 +39,8 @@ namespace SmallsOnline.Azure.AVDSetup.Lib.Models
         [JsonPropertyName("adConfig")]
         public ActiveDirectory ActiveDirectoryConfig { get; set; }
 
-        [JsonPropertyName("secretItems")]
-        public SecretItem[] SecretItems { get; set; }
+        [JsonPropertyName("vmSecrets")]
+        public VirtualMachineSecrets VirtualMachineSecrets { get; set; }
 
         private static readonly JsonSerializerOptions serializerOptions = new()
         {
