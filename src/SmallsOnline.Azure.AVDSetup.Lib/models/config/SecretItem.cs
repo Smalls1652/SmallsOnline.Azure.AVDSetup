@@ -12,9 +12,6 @@ namespace SmallsOnline.Azure.AVDSetup.Lib.Models.Config
         [JsonPropertyName("secretName")]
         public string Name { get; set; }
 
-        [JsonPropertyName("secretType")]
-        public SecretItemType Type { get; set; }
-
         public override string ToString()
         {
             return $"{VaultName}/{Name}";

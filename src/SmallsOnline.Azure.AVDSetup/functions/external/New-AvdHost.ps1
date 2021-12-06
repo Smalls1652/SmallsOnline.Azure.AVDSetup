@@ -28,11 +28,8 @@ function New-AvdHost {
     $avdImageGallery = Get-AzGallery -ResourceGroupName $configItem.GalleryConfig.ResourceGroupName -Name $configItem.GalleryConfig.GalleryName
     $avdSelectedImage = Get-AzGalleryImageVersion -ResourceGroupName $avdImageGallery.ResourceGroupName -GalleryName $avdImageGallery.Name -GalleryImageDefinitionName $configItem.GalleryConfig.ImageDefinitionName -Name $configItem.GalleryConfig.ImageDefinitionVersion
 
-    $vmSecretItemLocalAdmin = ($configItem.SecretItems | Where-Object { $PSItem.Type -eq [SmallsOnline.Azure.AVDSetup.Lib.Models.Config.SecretItemType]::LocalAdmin })[0]
-    $vmSecretItemDomainJoiner = ($configItem.SecretItems | Where-Object { $PSItem.Type -eq [SmallsOnline.Azure.AVDSetup.Lib.Models.Config.SecretItemType]::DomainJoiner })[0]
-
-    $vmLocalAdminCreds = Get-Secret -Vault $vmSecretItemLocalAdmin.VaultName -Name $vmSecretItemLocalAdmin.Name
-    $vdiJoinerCreds = Get-Secret -Vault $vmSecretItemDomainJoiner.VaultName -Name $vmSecretItemDomainJoiner.Name
+    $vmLocalAdminCreds = Get-Secret -Vault $configItem.VirtualMachineSecrets.LocalAdminAccount.VaultName -Name $configItem.VirtualMachineSecrets.LocalAdminAccount.Name
+    $vdiJoinerCreds = Get-Secret -Vault $configItem.VirtualMachineSecrets.DomainJoinerAccount.VaultName -Name $configItem.VirtualMachineSecrets.DomainJoinerAccount.Name
 
     Write-Verbose "Generating possible list of VM names."
     $possibleVmNames = for ($i = 0; $i -le 1000; $i++) {

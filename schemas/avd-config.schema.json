@@ -24,12 +24,10 @@
             "type": "object",
             "$ref": "./activedirectory-config.schema.json"
         },
-        "secretItems": {
-            "description": "Secret items to use for .",
-            "type": "array",
-            "items": {
-                "$ref": "./secret-item.schema.json"
-            }
+        "vmSecrets": {
+            "description": "Secrets needed to set up the virtual machine.",
+            "type": "object",
+            "$ref": "./vm-secrets.schema.json"
         }
     }
 }

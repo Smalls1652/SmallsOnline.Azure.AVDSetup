@@ -4,6 +4,5 @@ namespace SmallsOnline.Azure.AVDSetup.Lib.Models.Config
     {
         string VaultName { get; set; }
         string Name { get; set; }
-        SecretItemType Type { get; set; }
     }
 }

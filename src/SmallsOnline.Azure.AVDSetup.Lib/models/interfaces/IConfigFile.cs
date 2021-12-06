@@ -8,7 +8,7 @@ namespace SmallsOnline.Azure.AVDSetup.Lib.Models
         VirtualNetwork VirtualNetworkConfig { get; set; }
         ComputeGallery GalleryConfig { get; set; }
         ActiveDirectory ActiveDirectoryConfig { get; set; }
-        SecretItem[] SecretItems { get; set; }
+        VirtualMachineSecrets VirtualMachineSecrets { get; set; }
 
         string ConvertToJson();
     }
