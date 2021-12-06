@@ -1,5 +1,6 @@
 [Bb]uild/
 _configs/
+[Tt]ests/
 
 ##
 ## .NET '.gitignore' template below this line
