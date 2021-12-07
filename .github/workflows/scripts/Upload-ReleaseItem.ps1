@@ -6,14 +6,16 @@ param(
     [string]$Name
 )
 
-$apiHeaders = @{
-    "Authorization" = "Bearer $($Token)";
+$commonSplat = @{
+    "Authentication" = "OAuth";
+    "Token"          = (ConvertTo-SecureString -String $Token -AsPlainText -Force);
+    "ErrorAction"    = "Stop";
 }
 
-$releaseId = (Invoke-RestMethod -Method "Get" -Headers $apiHeaders -Uri $env:TAG_RELEASE_API)[0].id
+$releaseId = (Invoke-RestMethod @commonSplat -Method "Get" -Uri $env:TAG_RELEASE_API)[0].id
 
-Write-Verbose $releaseId
+Write-Information -InformationAction "Continue" -MessageData $releaseId
 
-Write-Verbose "$($env:RELEASE_API_URI)/$($releaseId)/assets?name=$($Name)"
+Write-Information -InformationAction "Continue" -MessageData "$($env:RELEASE_API_URI)/$($releaseId)/assets?name=$($Name)"
 
-Invoke-RestMethod -Method "Post" -Uri "$($env:RELEASE_API_URI)/$($releaseId)/assets?name=$($Name)" -ContentType "application/zip" -Headers $apiHeaders -InFile "./build/SmallsOnline.Azure.AVDSetup.zip" -Verbose -ErrorAction "Stop"
+Invoke-RestMethod @commonSplat -Method "Post" -Uri "$($env:RELEASE_API_URI)/$($releaseId)/assets?name=$($Name)" -ContentType "application/zip" -InFile "./build/SmallsOnline.Azure.AVDSetup.zip"
