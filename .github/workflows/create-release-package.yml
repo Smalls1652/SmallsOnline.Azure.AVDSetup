@@ -37,5 +37,5 @@ jobs:
           TAG_RELEASE_API: https://api.github.com/repos/${{ github.repository }}/releases/tags/${{ github.ref_name }}
           RELEASE_API_URI: https://api.github.com/repos/${{ github.repository }}/releases
         shell: pwsh
-        run: ./.github/workflows/scripts/Upload-ReleaseItem.ps1 -Token {{ secrets.RELEASE_API_TOKEN }} -Name "module-zip" -Verbose
+        run: ./.github/workflows/scripts/Upload-ReleaseItem.ps1 -Token ${{ secrets.RELEASE_API_TOKEN }} -Name "module-zip" -Verbose
            

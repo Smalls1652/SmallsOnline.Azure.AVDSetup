@@ -1,14 +1,14 @@
 [CmdletBinding()]
 param(
     [Parameter(Position = 0, Mandatory)]
-    [securestring]$Token,
+    [string]$Token,
     [Parameter(Position = 1, Mandatory)]
     [string]$Name
 )
 
 $commonSplat = @{
     "Authentication" = "OAuth";
-    "Token"          = $Token;
+    "Token"          = (ConvertTo-SecureString -String $Token -AsPlainText -Force);
     "ErrorAction"    = "Stop";
 }
 
